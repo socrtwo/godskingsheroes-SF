@@ -1,0 +1,35 @@
+name: Validate Famous Family Trees
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: GEDCOM Data Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: List GEDCOM files
+        run: |
+          echo "GEDCOM files in this project:"
+          for f in $(find . -name "*.ged"); do
+            lines=$(wc -l < "$f")
+            size=$(du -h "$f" | cut -f1)
+            echo "  $f: $lines lines ($size)"
+          done
+
+      - name: Count total records
+        run: |
+          total=0
+          for f in $(find . -name "*.ged"); do
+            individuals=$(grep -c "^0.*INDI$" "$f" 2>/dev/null || echo 0)
+            families=$(grep -c "^0.*FAM$" "$f" 2>/dev/null || echo 0)
+            echo "$f: $individuals individuals, $families families"
+            total=$((total + individuals + families))
+          done
+          echo "Total records across all files: $total"
