@@ -1,5 +1,10 @@
 # Famous Family Trees
 
+<!--PAGES_LINK_BANNER-->
+> 🌐 **Live page:** [https://socrtwo.github.io/godskingsheroes-SF/](https://socrtwo.github.io/godskingsheroes-SF/)  
+> 📦 **Releases:** [github.com/socrtwo/godskingsheroes-SF/releases](https://github.com/socrtwo/godskingsheroes-SF/releases)
+<!--/PAGES_LINK_BANNER-->
+
 A collection of genealogy data in GEDCOM format covering biological species, corporations, fictional characters, religious figures, royalty, and political figures.
 
 **Language:** GEDCOM Data  
